@@ -60,17 +60,17 @@ export default function Portfolio() {
                 </AvatarFallback>
               </Avatar>
             </div>
-            
+
             <div className="flex-1 text-center lg:text-left space-y-6">
               <div>
                 <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-3 leading-tight">Nattayaporn Morprakop</h1>
                 <h2 className="text-xl lg:text-2xl font-semibold mb-6 leading-relaxed" style={{color: '#0ea5bf'}}>IT Recruitment Consultant</h2>
                 <p className="text-lg lg:text-xl text-gray-700 max-w-2xl leading-relaxed font-medium">
-                  Experienced recruitment professional specializing in IT talent acquisition with a proven track record 
+                  Experienced recruitment professional specializing in IT talent acquisition with a proven track record
                   in connecting top-tier candidates with innovative companies.
                 </p>
               </div>
-              
+
               <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-4">
                 <Badge variant="secondary" className="px-3 py-1">
                   <Building className="w-4 h-4 mr-1" />
@@ -85,20 +85,20 @@ export default function Portfolio() {
                   1,879 Followers
                 </Badge>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row flex-wrap gap-3 lg:gap-4 justify-center lg:justify-start pt-4 w-full max-w-sm lg:max-w-none">
-                <Button 
-                  size="lg" 
-                  className="hover:opacity-90 w-full sm:w-auto" 
+                <Button
+                  size="lg"
+                  className="hover:opacity-90 w-full sm:w-auto"
                   style={{backgroundColor: '#0ea5bf'}}
                   onClick={() => window.location.href = 'mailto:[removed-email]'}
                 >
                   <Mail className="w-4 h-4 mr-2" />
                   Contact Me
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
+                <Button
+                  variant="outline"
+                  size="lg"
                   className="w-full sm:w-auto"
                   onClick={() => window.open('https://linkedin.com/in/nattayaporn-morprakop-00744428a', '_blank')}
                 >
@@ -147,7 +147,7 @@ export default function Portfolio() {
                 <p className="text-gray-900 font-semibold text-base lg:text-lg">[removed-phone]</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center hover:shadow-lg transition-shadow h-fit">
               <CardContent className="pt-6 pb-6">
                 <Mail className="w-8 h-8 lg:w-10 lg:h-10 mx-auto mb-3" style={{color: '#0ea5bf'}} />
@@ -155,7 +155,7 @@ export default function Portfolio() {
                 <p className="text-gray-900 font-semibold text-sm lg:text-base break-all">[removed-email]</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center hover:shadow-lg transition-shadow h-fit">
               <CardContent className="pt-6 pb-6">
                 <Linkedin className="w-8 h-8 lg:w-10 lg:h-10 mx-auto mb-3" style={{color: '#0ea5bf'}} />
@@ -163,7 +163,7 @@ export default function Portfolio() {
                 <p className="text-gray-900 font-semibold text-sm lg:text-base">linkedin.com/in/nattayaporn</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center hover:shadow-lg transition-shadow h-fit">
               <CardContent className="pt-6 pb-6">
                 <MapPin className="w-8 h-8 lg:w-10 lg:h-10 mx-auto mb-3" style={{color: '#0ea5bf'}} />
@@ -247,7 +247,7 @@ export default function Portfolio() {
                 </CardHeader>
               </Card>
             </div>
-            
+
             {/* Key Skills Summary */}
             <div className="xl:col-span-2">
               <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-8">Professional Skills</h2>
@@ -256,10 +256,10 @@ export default function Portfolio() {
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                     <CardContent className="pt-6 pb-6">
                       <h3 className="font-semibold text-gray-900 mb-2 text-sm lg:text-base">{skill.name}</h3>
-                      <Badge 
+                      <Badge
                         className={`mb-2 text-xs ${
-                          skill.level === 'Expert' 
-                            ? 'bg-green-100 text-green-800' 
+                          skill.level === 'Expert'
+                            ? 'bg-green-100 text-green-800'
                             : 'text-white'
                         }`}
                         style={skill.level !== 'Expert' ? {backgroundColor: '#0ea5bf'} : {}}
@@ -285,7 +285,7 @@ export default function Portfolio() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">Let&apos;s Connect</h2>
           <p className="text-lg lg:text-xl mb-8 opacity-90 leading-relaxed max-w-3xl mx-auto">
-            Ready to find your next great hire or discuss recruitment opportunities? 
+            Ready to find your next great hire or discuss recruitment opportunities?
             I&apos;m here to help connect talent with opportunity.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -293,9 +293,9 @@ export default function Portfolio() {
               <Mail className="w-5 h-5 mr-2" />
               [removed-email]
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
+            <Button
+              size="lg"
+              variant="outline"
               className="text-base lg:text-lg px-6 lg:px-8 py-3 text-white border-white hover:bg-white transition-colors font-semibold"
               onMouseEnter={(e) => e.currentTarget.style.color = '#0ea5bf'}
               onMouseLeave={(e) => e.currentTarget.style.color = 'white'}
@@ -318,7 +318,7 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto px-4 lg:px-6 py-8 lg:py-12">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-            
+
             {/* About Section */}
             <div className="lg:col-span-1">
               <h3 className="text-xl font-bold mb-4" style={{color: '#0ea5bf'}}>Nattayaporn Morprakop</h3>
@@ -330,27 +330,27 @@ export default function Portfolio() {
                 <span>1,879+ LinkedIn Followers</span>
               </div>
             </div>
-            
+
             {/* Quick Contact */}
             <div className="lg:col-span-1">
               <h3 className="text-lg font-bold mb-4 text-white">Quick Contact</h3>
               <div className="space-y-3">
-                <a 
-                  href="tel:[removed-phone]" 
+                <a
+                  href="tel:[removed-phone]"
                   className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group"
                 >
                   <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" style={{color: '#0ea5bf'}} />
                   <span className="font-medium text-base">[removed-phone]</span>
                 </a>
-                <a 
-                  href="mailto:[removed-email]" 
+                <a
+                  href="mailto:[removed-email]"
                   className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group"
                 >
                   <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" style={{color: '#0ea5bf'}} />
                   <span className="font-medium text-sm lg:text-base break-all">[removed-email]</span>
                 </a>
-                <a 
-                  href="https://linkedin.com/in/nattayaporn-morprakop-00744428a" 
+                <a
+                  href="https://linkedin.com/in/nattayaporn-morprakop-00744428a"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group"
@@ -360,7 +360,7 @@ export default function Portfolio() {
                 </a>
               </div>
             </div>
-            
+
             {/* Professional Services */}
             <div className="lg:col-span-1">
               <h3 className="text-lg font-bold mb-4 text-white">Recruitment Services</h3>
@@ -390,7 +390,7 @@ export default function Portfolio() {
               </div>
             </div>
           </div>
-          
+
           {/* Footer Bottom */}
           <div className="mt-8 pt-6 border-t border-gray-700">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
