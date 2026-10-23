@@ -93,7 +93,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Contact
 
 For questions about this portfolio template:
-- Email: [removed-email]
-- Phone: [removed-phone]
+- Email: not published (contact via LinkedIn)
+- Phone: not published (contact via LinkedIn)
 - LinkedIn: [Nattayaporn Morprakop](https://linkedin.com/in/nattayaporn-morprakop-00744428a)
 - Line ID: benznattaya

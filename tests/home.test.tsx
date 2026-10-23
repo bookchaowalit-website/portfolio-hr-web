@@ -16,8 +16,9 @@ describe("profile page", () => {
     expect(html.match(/<h3/g)?.length ?? 0).toBeGreaterThan(6);
   });
 
-  it("offers contact links (mail and phone)", () => {
-    expect(html).toMatch(/href="mailto:/);
-    expect(html).toMatch(/href="tel:/);
+  it("routes contact through LinkedIn and publishes no mail or phone links", () => {
+    expect(html).not.toMatch(/mailto:|tel:/);
+    expect(html).toMatch(/href="https:\/\/linkedin\.com\/in\//);
+    expect(html).toContain("Via LinkedIn message");
   });
 });

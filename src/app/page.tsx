@@ -91,7 +91,7 @@ export default function Portfolio() {
                   size="lg"
                   className="hover:opacity-90 w-full sm:w-auto"
                   style={{backgroundColor: '#0ea5bf'}}
-                  onClick={() => window.location.href = 'mailto:[removed-email]'}
+                  onClick={() => window.open('https://linkedin.com/in/nattayaporn-morprakop-00744428a', '_blank')}
                 >
                   <Mail className="w-4 h-4 mr-2" />
                   Contact Me
@@ -144,7 +144,7 @@ export default function Portfolio() {
               <CardContent className="pt-6 pb-6">
                 <Phone className="w-8 h-8 lg:w-10 lg:h-10 mx-auto mb-3" style={{color: '#0ea5bf'}} />
                 <h3 className="font-semibold text-gray-900 mb-2 text-base lg:text-lg">Phone</h3>
-                <p className="text-gray-900 font-semibold text-base lg:text-lg">[removed-phone]</p>
+                <p className="text-gray-900 font-semibold text-base lg:text-lg">Via LinkedIn message</p>
               </CardContent>
             </Card>
 
@@ -152,7 +152,7 @@ export default function Portfolio() {
               <CardContent className="pt-6 pb-6">
                 <Mail className="w-8 h-8 lg:w-10 lg:h-10 mx-auto mb-3" style={{color: '#0ea5bf'}} />
                 <h3 className="font-semibold text-gray-900 mb-2 text-base lg:text-lg">Email</h3>
-                <p className="text-gray-900 font-semibold text-sm lg:text-base break-all">[removed-email]</p>
+                <p className="text-gray-900 font-semibold text-sm lg:text-base">Via LinkedIn message</p>
               </CardContent>
             </Card>
 
@@ -289,20 +289,20 @@ export default function Portfolio() {
             I&apos;m here to help connect talent with opportunity.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-base lg:text-lg px-6 lg:px-8 py-3">
+            <Button size="lg" variant="secondary" className="text-base lg:text-lg px-6 lg:px-8 py-3" onClick={() => window.open('https://linkedin.com/in/nattayaporn-morprakop-00744428a', '_blank')}>
               <Mail className="w-5 h-5 mr-2" />
-              [removed-email]
+              Message on LinkedIn
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="text-base lg:text-lg px-6 lg:px-8 py-3 text-white border-white hover:bg-white transition-colors font-semibold"
+              className="text-base lg:text-lg px-6 lg:px-8 py-3 bg-transparent text-white border-white hover:bg-white transition-colors font-semibold"
               onMouseEnter={(e) => e.currentTarget.style.color = '#0ea5bf'}
               onMouseLeave={(e) => e.currentTarget.style.color = 'white'}
-              onClick={() => window.location.href = 'tel:[removed-phone]'}
+              onClick={() => window.open('https://linkedin.com/in/nattayaporn-morprakop-00744428a', '_blank')}
             >
-              <Phone className="w-5 h-5 mr-2" />
-              [removed-phone]
+              <Linkedin className="w-5 h-5 mr-2" />
+              View LinkedIn profile
             </Button>
           </div>
           <div className="mt-8 pt-8 border-t border-white/20">
@@ -335,20 +335,6 @@ export default function Portfolio() {
             <div className="lg:col-span-1">
               <h3 className="text-lg font-bold mb-4 text-white">Quick Contact</h3>
               <div className="space-y-3">
-                <a
-                  href="tel:[removed-phone]"
-                  className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group"
-                >
-                  <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" style={{color: '#0ea5bf'}} />
-                  <span className="font-medium text-base">[removed-phone]</span>
-                </a>
-                <a
-                  href="mailto:[removed-email]"
-                  className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group"
-                >
-                  <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" style={{color: '#0ea5bf'}} />
-                  <span className="font-medium text-sm lg:text-base break-all">[removed-email]</span>
-                </a>
                 <a
                   href="https://linkedin.com/in/nattayaporn-morprakop-00744428a"
                   target="_blank"
