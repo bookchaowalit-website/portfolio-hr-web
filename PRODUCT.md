@@ -16,7 +16,8 @@ Visitors who want that person's professional background and contact details.
 ## What works today
 
 1. One prerendered page (`/`) built from shadcn/ui primitives (Avatar, Badge, Button, Card, Separator).
-2. Contact buttons open `mailto:`, `tel:` and external profile links. There is no form and no backend.
+2. Contact buttons open the LinkedIn profile. No phone number or email address is published. There is no form and
+   no backend.
 3. Front-end and server errors go to Sentry (errors only, request data, user, breadcrumbs, extra context and stack
    frame variables stripped) when `NEXT_PUBLIC_SENTRY_DSN` is set.
 
@@ -25,19 +26,21 @@ Visitors who want that person's professional background and contact details.
 - No CMS, admin, contact form, analytics or API. Nothing is stored.
 - No measured SEO or performance work beyond the page metadata in `src/app/layout.tsx`.
 
-## Personal data (open P0 owner item)
+## Personal data (owner decision 2026-10-23: strip, then deploy)
 
-The page, `README.md`, `public/profile.webp` and the excerpt at the end of this file hold a third party's personal
-data. Whether it stays published is the owner's decision. Until then the code changes in this repository leave that
-data exactly as it was, and the tests use only their own fixtures (they assert page structure, never its content).
+The page still names one third party and shows their photo, work history, education and LinkedIn profile. Their
+phone number and email addresses were removed from the page and `README.md` on 2026-10-23 (contact now goes through
+LinkedIn); `tests/no-contact-details.test.ts` fails if a phone number or email address comes back in any shipped
+file. Older git commits still contain them: history was not rewritten (owner decision). A messaging-app handle is
+still shown on the page; it is neither a phone number nor an email and was outside this change.
 
 ## Live URL and deploy state
 
 - Vercel project `benz-portfolio` (domain https://benz-portfolio.bookchaowalit.com, HTTP 200 on 2026-10-23).
 - Last production deployment: 2025-08-30, source `import`, commit e3c9c8b. Its Git link names the old repository
   `bookchaowalit/hr-portfolio`, so a push to `main` does not deploy. The live site still runs that 2025 build (older
-  Next.js, no Sentry). It was deliberately not patch-deployed, because a deploy re-publishes the personal data:
-  deploying or reconnecting Vercel Git is an owner decision (D9 + P0).
+  Next.js, no Sentry, and still showing the phone number and email addresses). The owner decided to strip the contact
+  details and then deploy; the coordinator deploys the green `main` under D9a when the Vercel deployment quota resets.
 - `NEXT_PUBLIC_SENTRY_DSN` is set on the Vercel project (Sentry project `portfolio-hr-web`, org `personal-yu0`).
 
 ## Boundaries
@@ -49,7 +52,7 @@ data exactly as it was, and the tests use only their own fixtures (they assert p
 ## Checks
 
 `npm run lint && npm run typecheck && npm test && npm run build`. Tests: `tests/utils.test.ts` (class merging),
-`tests/ui.test.tsx` (UI primitives with fixtures), `tests/home.test.tsx` (page structure smoke),
+`tests/ui.test.tsx` (UI primitives with fixtures), `tests/home.test.tsx` (page structure smoke), `tests/no-contact-details.test.ts` (no phone or email in shipped files),
 `tests/sentry.test.ts` (Sentry scrubbing).
 
 ## Earlier brief (kept unchanged pending the P0 decision)
