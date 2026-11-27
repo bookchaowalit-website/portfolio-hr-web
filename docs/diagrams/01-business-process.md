@@ -1,6 +1,6 @@
 # 01 — Business process (As-Is / To-Be)
 
-portfolio-hr-web คือหน้าเดียว (`/`) แบบ static ของ Next.js 15 ที่แสดงโปรไฟล์มืออาชีพของบุคคลที่สามหนึ่งคน (รูป ประสบการณ์ การศึกษา ทักษะ) ผู้เยี่ยมชมกดปุ่มเพื่อเปิดโปรไฟล์ LinkedIn ของบุคคลนั้น ไม่มี backend ไม่มีฟอร์ม และไม่เก็บข้อมูลใด ๆ
+portfolio-hr-web คือหน้าเดียว (`/`) แบบ static ของ Next.js 15 ที่แสดงโปรไฟล์มืออาชีพของบุคคลที่สามหนึ่งคน (รูป ประสบการณ์ การศึกษา ทักษะ) ผู้เยี่ยมชมกดปุ่มเพื่อเปิดโปรไฟล์ LinkedIn ของบุคคลนั้น ไม่มี backend ของแอป ไม่มีฟอร์ม ไม่มีฐานข้อมูลหรือ storage ของผู้เยี่ยมชม ยกเว้นรายงาน error ไป Sentry เมื่อกำหนด `NEXT_PUBLIC_SENTRY_DSN`
 
 Last reviewed: 2026-11-28 · commit `0acc16f`
 
@@ -14,11 +14,10 @@ flowchart LR
   BTN --> LI["window.open LinkedIn profile in a new tab"]
   LAYOUT["src/app/layout.tsx metadata"] -.-> PAGE
   ERR["browser or server error"] --> SENT{"NEXT_PUBLIC_SENTRY_DSN set?"}
-  SENT -->|yes| SCRUB["Sentry errors only; request, user, breadcrumbs, extra, frame vars stripped"]
+  SENT -->|yes| SCRUB["Sentry errors only; beforeSend drops request, user, breadcrumbs, extra, frame vars; strips query and hash"]
   SENT -->|no| NOOP["nothing sent"]
-  CI["CI: lint, typecheck, vitest, build"] --> GUARD["tests/no-contact-details: fail if phone or email found in shipped files"]
-  GUARD --> MAIN["main branch"]
-  MAIN -.->|"Git link names old repo, push does not deploy [ต้องยืนยัน]"| DEPLOY["Vercel project, deployed by coordinator"]
+  PUSH["push or PR to main"] --> CI["CI: lint, typecheck, vitest incl. no-contact-details guard, build"]
+  PUSH -.->|"Git link names old repo, push does not deploy [ต้องยืนยัน]"| DEPLOY["Vercel project, deployed by coordinator, not gated by CI"]
 ```
 
 Sources: `src/app/page.tsx`, `src/app/layout.tsx`, `src/instrumentation.ts`, `src/instrumentation-client.ts`, `src/lib/sentry.ts`, `tests/no-contact-details.test.ts`, `tests/contact-scan.ts`, `.github/workflows/ci.yml`, `PRODUCT.md`
@@ -27,7 +26,7 @@ Sources: `src/app/page.tsx`, `src/app/layout.tsx`, `src/instrumentation.ts`, `sr
 
 - ไม่มี API route, ไม่มี form, ไม่มี storage; ข้อมูลทั้งหมดเป็นข้อความในไฟล์ `page.tsx`
 - เบอร์โทรและอีเมลถูกถอดออกแล้ว (ตัวทดสอบ `no-contact-details` ล้มถ้ากลับมา); git history เก่ายังมีอยู่ตามการตัดสินใจของ owner ใน PRODUCT.md
-- การ์ด Phone / Email ในหน้าแสดงข้อความ "Via LinkedIn message" (ไม่มีเบอร์หรืออีเมลจริง); PRODUCT.md บอกว่ายังมี handle ของแอปส่งข้อความบนหน้า ซึ่งยืนยันจากโค้ดไม่ได้ [ต้องยืนยัน]
+- การ์ด Phone / Email ในหน้าแสดงข้อความ "Via LinkedIn message" (ไม่มีเบอร์หรืออีเมลจริง) แต่โค้ดปัจจุบันยังแสดง LINE ID ของบุคคลนั้นอยู่ 2 จุด (ส่วนติดต่อและท้ายหน้า, `src/app/page.tsx`) ตรงกับที่ PRODUCT.md บอกว่ายังมี handle ของแอปส่งข้อความบนหน้า ค่าจริงไม่คัดลอกมาที่นี่
 - เว็บจริงตาม PRODUCT.md (2026-10-23) ยังเป็น build ปี 2025 ที่ยังแสดงเบอร์และอีเมล; สถานะ deploy วันนี้ [ต้องยืนยัน]
 
 ## To-Be (PRODUCT.md §Personal data และ §Live URL and deploy state)
@@ -50,7 +49,7 @@ Sources: `PRODUCT.md` §Personal data (owner decision 2026-10-23: strip, then de
 |---|---|---|---|---|
 | G1 | main ไม่มีเบอร์/อีเมลแล้ว → เหมือนเดิม (strip) | done | claude | `tests/no-contact-details.test.ts`, `PRODUCT.md` §Personal data |
 | G2 | เว็บจริงยังเป็น build ปี 2025 ที่แสดงเบอร์และอีเมล และ push ไป main ไม่ deploy → deploy green main (D9a) | todo | owner | `PRODUCT.md` §Live URL and deploy state [ต้องยืนยัน] |
-| G3 | PRODUCT.md ระบุว่ายังแสดง handle ของแอปส่งข้อความของบุคคลที่สาม → owner ตัดสินว่าจะคงหรือเอาออก | decide | owner | `PRODUCT.md` §Personal data [ต้องยืนยัน] |
+| G3 | โค้ดยังแสดง LINE ID ของบุคคลที่สามบนหน้า (ยืนยันจาก `src/app/page.tsx`) → owner ตัดสินว่าจะคงหรือเอาออก | decide | owner | `src/app/page.tsx`, `PRODUCT.md` §Personal data |
 
 ## Open questions
 
